@@ -3,6 +3,9 @@ $(document).ready(function() {
     const input = $("#m3u8-placeholder");
     const button = $("#play-btn");
 
+    // Cargar último link
+    input.val(localStorage.getItem('m3u8-link') || '');
+
     function isValidM3U8(url) {
         return url.includes(".m3u8");
     }
@@ -19,11 +22,17 @@ $(document).ready(function() {
         input.removeClass("error");
         setLoading(true);
 
-        // Simulación de carga (puedes reemplazar con tu player real)
+        // Guardar
+        localStorage.setItem('m3u8-link', url);
+
         setTimeout(() => {
             setLoading(false);
-            showMessage("Reproduciendo...", true);
-        }, 2000);
+            showMessage("Redirigiendo...", true);
+
+            // Redirección
+            window.location.href = './player#' + url;
+
+        }, 1000);
     });
 
     input.on("input", function() {
@@ -31,13 +40,8 @@ $(document).ready(function() {
     });
 
     function setLoading(state) {
-        if (state) {
-            button.text("Cargando...");
-            button.prop("disabled", true);
-        } else {
-            button.text("Play");
-            button.prop("disabled", false);
-        }
+        button.text(state ? "Cargando..." : "Play");
+        button.prop("disabled", state);
     }
 
     function showMessage(text, success = false) {
@@ -50,20 +54,7 @@ $(document).ready(function() {
 
         msg.text(text);
         msg.removeClass("error-text success-text");
-
-        if (success) {
-            msg.addClass("success-text");
-        } else {
-            msg.addClass("error-text");
-        }
+        msg.addClass(success ? "success-text" : "error-text");
     }
 
-});
-
-$(window).on('load', function () {
-    $('#m3u8-placeholder')[0].value = localStorage.getItem('m3u8-link') || '';
-    $('#play-btn').on('click', function () {
-        localStorage.setItem('m3u8-link', $('#m3u8-placeholder')[0].value);
-        window.location.href = './player' + '#' + $('#m3u8-placeholder')[0].value;
-    });
 });
