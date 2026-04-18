@@ -71,3 +71,36 @@
 #play-btn:active {
     transform: scale(0.95);
 }
+
+/* Animación al escribir */
+#m3u8-placeholder {
+    transition: all 0.3s ease;
+}
+
+/* Error */
+#m3u8-placeholder.error {
+    border-color: red;
+    box-shadow: 0 0 8px rgba(255,0,0,0.6);
+}
+
+/* Mensajes */
+#msg {
+    margin-top: 15px;
+    font-weight: bold;
+    text-align: center;
+}
+
+/* Texto error */
+.error-text {
+    color: #dc3545;
+}
+
+/* Texto éxito */
+.success-text {
+    color: #28a745;
+}
+
+/* Animación al pegar */
+#m3u8-placeholder:focus {
+    transform: scale(1.02);
+}
