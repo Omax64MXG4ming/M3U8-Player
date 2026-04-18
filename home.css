@@ -1,35 +1,28 @@
-.page-name {
-    margin: 0.5em 2.5em;
-    color: rgb(18, 96, 101);
-    font-size: 2.5em;
+/* Centrado con flex (NO usar position fixed) */
+body {
+    background-color: gray;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
 }
 
-#text-box {
-    position:fixed;
-    top: 50%;
-    left: 50%;
-    width:30em;
-    height:18em;
-    margin-top: -9em; /*set to a negative number 1/2 of your height*/
-    margin-left: -15em; /*set to a negative number 1/2 of your width*/
-}
-
-@media (max-width: 600px) {
-  body {
-    background-color: lightgray;
-  }
-
-  .container {
-    flex-direction: column;
-  }
-}
-
-/* Contenedor */
+/* Caja */
 #text-box {
     background: #ffffff;
     padding: 25px;
     border-radius: 15px;
+    width: 100%;
+    max-width: 500px;
     box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+}
+
+/* Título */
+.page-name {
+    text-align: center;
+    margin-bottom: 20px;
+    color: rgb(18, 96, 101);
+    font-size: 2em;
 }
 
 /* Input */
@@ -41,16 +34,17 @@
     transition: all 0.3s ease;
 }
 
-/* Placeholder */
-#m3u8-placeholder::placeholder {
-    color: #999;
-}
-
-/* Focus (cuando haces click) */
 #m3u8-placeholder:focus {
     border-color: #007bff;
     box-shadow: 0 0 8px rgba(0,123,255,0.5);
     outline: none;
+    transform: scale(1.02);
+}
+
+/* Error */
+#m3u8-placeholder.error {
+    border-color: red;
+    box-shadow: 0 0 8px rgba(255,0,0,0.6);
 }
 
 /* Botón */
@@ -61,26 +55,13 @@
     transition: all 0.3s ease;
 }
 
-/* Hover botón */
 #play-btn:hover {
     background-color: #0056b3;
     transform: scale(1.05);
 }
 
-/* Click efecto */
 #play-btn:active {
     transform: scale(0.95);
-}
-
-/* Animación al escribir */
-#m3u8-placeholder {
-    transition: all 0.3s ease;
-}
-
-/* Error */
-#m3u8-placeholder.error {
-    border-color: red;
-    box-shadow: 0 0 8px rgba(255,0,0,0.6);
 }
 
 /* Mensajes */
@@ -90,17 +71,5 @@
     text-align: center;
 }
 
-/* Texto error */
-.error-text {
-    color: #dc3545;
-}
-
-/* Texto éxito */
-.success-text {
-    color: #28a745;
-}
-
-/* Animación al pegar */
-#m3u8-placeholder:focus {
-    transform: scale(1.02);
-}
+.error-text { color: #dc3545; }
+.success-text { color: #28a745; }
