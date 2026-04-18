@@ -3,7 +3,6 @@ $(document).ready(function() {
     const input = $("#m3u8-placeholder");
     const button = $("#play-btn");
 
-    // Cargar último link
     input.val(localStorage.getItem('m3u8-link') || '');
 
     function isValidM3U8(url) {
@@ -22,32 +21,13 @@ $(document).ready(function() {
         input.removeClass("error");
         setLoading(true);
 
-        // Guardar
         localStorage.setItem('m3u8-link', url);
 
         setTimeout(() => {
-            setLoading(false);
             showMessage("Redirigiendo...", true);
 
-            // Redirección
-            button.click(function() {
-    let url = input.val().trim();
-
-    if (!isValidM3U8(url)) {
-        input.addClass("error");
-        showMessage("Link inválido (debe contener .m3u8)");
-        return;
-    }
-
-    input.removeClass("error");
-    setLoading(true);
-
-    // Guardar
-    localStorage.setItem('m3u8-link', url);
-
-    // Redirigir DIRECTO (sin esperar)
-    window.location.href = './player#' + url;
-});
+            // ✅ AQUÍ VA LA REDIRECCIÓN DIRECTA
+            window.location.href = './player#' + url;
 
         }, 1000);
     });
