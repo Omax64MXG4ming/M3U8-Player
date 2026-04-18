@@ -30,7 +30,24 @@ $(document).ready(function() {
             showMessage("Redirigiendo...", true);
 
             // Redirección
-            window.location.href = './player#' + url;
+            button.click(function() {
+    let url = input.val().trim();
+
+    if (!isValidM3U8(url)) {
+        input.addClass("error");
+        showMessage("Link inválido (debe contener .m3u8)");
+        return;
+    }
+
+    input.removeClass("error");
+    setLoading(true);
+
+    // Guardar
+    localStorage.setItem('m3u8-link', url);
+
+    // Redirigir DIRECTO (sin esperar)
+    window.location.href = './player#' + url;
+});
 
         }, 1000);
     });
