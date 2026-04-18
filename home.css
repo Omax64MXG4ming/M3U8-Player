@@ -13,3 +13,13 @@
     margin-top: -9em; /*set to a negative number 1/2 of your height*/
     margin-left: -15em; /*set to a negative number 1/2 of your width*/
 }
+
+@media (max-width: 600px) {
+  body {
+    background-color: lightgray;
+  }
+
+  .container {
+    flex-direction: column;
+  }
+}
