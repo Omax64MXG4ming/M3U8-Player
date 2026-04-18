@@ -23,3 +23,51 @@
     flex-direction: column;
   }
 }
+
+/* Contenedor */
+#text-box {
+    background: #ffffff;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+}
+
+/* Input */
+#m3u8-placeholder {
+    border: 2px solid #ccc;
+    border-radius: 10px 0 0 10px;
+    padding: 12px;
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+/* Placeholder */
+#m3u8-placeholder::placeholder {
+    color: #999;
+}
+
+/* Focus (cuando haces click) */
+#m3u8-placeholder:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 8px rgba(0,123,255,0.5);
+    outline: none;
+}
+
+/* Botón */
+#play-btn {
+    border-radius: 0 10px 10px 0;
+    padding: 12px 20px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+/* Hover botón */
+#play-btn:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
+
+/* Click efecto */
+#play-btn:active {
+    transform: scale(0.95);
+}
