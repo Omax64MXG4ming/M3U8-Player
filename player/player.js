@@ -52,7 +52,13 @@ function vidFullscreen() {
     }
 }
 
-playM3u8(window.location.href.split("#")[1])
+const hash = window.location.hash.substring(1);
+
+if (hash) {
+    playM3u8(hash);
+} else {
+    alert("No hay URL M3U8");
+}
 $(window).on('load', function () {
     $('#video').on('click', function(){this.paused?this.play():this.pause();});
     Mousetrap.bind('space', playPause);
